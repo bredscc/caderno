@@ -1,155 +1,122 @@
-# Caderno de Dúvidas com IA
+# Caderno de Estudos
 
-Uma aplicação web inteligente que ajuda você a manter o foco nos estudos, permitindo anotar dúvidas durante o aprendizado e receber explicações detalhadas de uma IA ao final da sessão.
+Uma ferramenta web minimalista para anotar dúvidas durante o estudo sem perder o foco. Organize suas questões e copie tudo de uma vez para buscar explicações depois.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![React](https://img.shields.io/badge/React-18.x-61dafb.svg)
 ![Vite](https://img.shields.io/badge/Vite-5.x-646cff.svg)
 
-## Problema Resolvido
+## O Problema
 
-Você já passou pela situação de estar estudando algo e, ao encontrar uma dúvida, acabar se perdendo em pesquisas paralelas, perdendo o foco do assunto principal?
+Você está estudando e surge uma dúvida. Você para para pesquisar no Google, acaba em 10 abas diferentes, perde o foco e esquece onde estava. Isso te soa familiar?
 
-Este aplicativo resolve exatamente isso: permite que você anote rapidamente suas dúvidas sem interromper o fluxo de estudos, e depois receba explicações correlacionadas de todas elas de uma só vez.
+## A Solução
+
+Este caderno digital permite que você **anote rapidamente suas dúvidas sem interromper o fluxo de estudo**. No final da sessão, você pode copiar todas as anotações formatadas e buscar as respostas de uma vez - seja em uma IA, com um professor, ou pesquisando depois.
 
 ## Funcionalidades
 
-- **Anotação Rápida**: Interface simples para registrar dúvidas durante o estudo
-- **Organização Temporal**: Cada dúvida é registrada com horário
-- **Explicações com IA**: Utiliza Claude (Anthropic) para gerar explicações detalhadas
-- **Correlação de Conceitos**: A IA identifica conexões entre suas dúvidas
-- **Citação de Fontes**: Explicações baseadas em conceitos estabelecidos
-- **Design Profissional**: Interface limpa e focada na produtividade
-- **Responsivo**: Funciona em desktop, tablet e mobile
+- Interface minimalista inspirada em cadernos físicos
+- Anotação rápida de dúvidas durante o estudo
+- Campo para registrar o assunto que está estudando
+- Numeração automática das anotações
+- Timestamp de cada registro
+- Botão para copiar tudo formatado
+- Visual com linhas de caderno e espiral decorativa
+- Design responsivo para desktop e mobile
 
-## Tecnologias Utilizadas
+## Tecnologias
 
-- **React 18** - Biblioteca JavaScript para interfaces
-- **Vite** - Build tool moderna e rápida
-- **Tailwind CSS** - Framework CSS utility-first
-- **Lucide React** - Ícones modernos e elegantes
-- **Anthropic API** - Inteligência artificial Claude Sonnet 4
-
-## Pré-requisitos
-
-- Node.js 16.x ou superior
-- npm ou yarn
-- Conta na Anthropic (opcional - a API já está configurada)
+- **React 18** - Biblioteca JavaScript
+- **Vite** - Build tool
+- **Tailwind CSS v4** - Estilização
+- **Lucide React** - Ícones
+- **Google Fonts** - Tipografia (Inter + Caveat)
 
 ## Instalação
 
-**1. Clone o repositório:**
-
 ```bash
+# Clone o repositório
 git clone https://github.com/bredscc/caderno-duvidas.git
 cd caderno-duvidas
-```
 
-**2. Instale as dependências:**
-
-```bash
+# Instale as dependências
 npm install
-```
 
-**3. Inicie o servidor de desenvolvimento:**
-
-```bash
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-**4. Abra seu navegador em** `http://localhost:5173`
+Acesse `http://localhost:5173`
 
 ## Como Usar
 
-1. **Defina o assunto** (opcional): Digite o tema que você está estudando no campo superior
-2. **Anote suas dúvidas**: Durante o estudo, sempre que surgir uma dúvida, pause rapidamente e anote
-3. **Continue estudando**: Suas dúvidas ficam salvas, você não precisa parar para pesquisar
-4. **Receba explicações**: Ao final da sessão, clique em "Explicar Todas as Dúvidas"
-5. **Aprenda**: A IA fornecerá explicações detalhadas, correlacionadas e com contexto
+1. **Defina o assunto** (opcional) no campo superior
+2. **Anote suas dúvidas** conforme elas surgem durante o estudo
+3. **Continue estudando** - suas anotações ficam salvas na tela
+4. **Copie tudo** ao final usando o botão "Copiar Tudo"
+5. **Cole no Claude.ai, ChatGPT, ou onde preferir** para obter explicações
 
-## Capturas de Tela
+## Build para Produção
 
-### Interface Principal
+```bash
+npm run build
+```
 
-Interface limpa e profissional com duas colunas: anotações à esquerda e explicações à direita.
+Os arquivos otimizados estarão na pasta `dist/`
 
-### Anotando Dúvidas
+## Deploy
 
-Sistema de numeração automática com timestamp para cada dúvida registrada.
+Este projeto está configurado para deploy no GitHub Pages. O arquivo está hospedado em:
+`https://brecketline.me/caderno/`
 
-### Explicações da IA
+Para fazer deploy:
 
-Respostas detalhadas, bem formatadas e fáceis de ler.
+```bash
+# Configure o base no vite.config.js para seu caminho
+base: '/caderno/'
+
+# Build e copie para seu repositório de páginas
+npm run build
+cp -r dist/* /caminho/para/seu/github.io/caderno/
+```
 
 ## Estrutura do Projeto
 
 ```
 caderno-duvidas/
-├── public/
 ├── src/
 │   ├── App.jsx          # Componente principal
 │   ├── main.jsx         # Entry point
-│   └── index.css        # Estilos globais
+│   └── index.css        # Estilos do Tailwind
+├── public/
 ├── package.json
 ├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
 └── README.md
-```
-
-## Notas sobre API
-
-O aplicativo utiliza a API da Anthropic (Claude). A chave de API está configurada para funcionar no contexto do Claude.ai. Para uso em produção, você deve:
-
-1. Obter sua própria chave em [console.anthropic.com](https://console.anthropic.com)
-2. Adicionar a chave em uma variável de ambiente
-3. Nunca expor a chave no código frontend em produção
-
-## Deploy
-
-### Vercel (Recomendado)
-
-```bash
-npm install -g vercel
-vercel
-```
-
-### Netlify
-
-```bash
-npm run build
-# Arraste a pasta 'dist' para netlify.com/drop
-```
-
-### GitHub Pages
-
-```bash
-npm install --save-dev gh-pages
-```
-
-Adicione ao `package.json`:
-
-```json
-"homepage": "https://bredscc.github.io/caderno-duvidas",
-"scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
-```
-
-Execute:
-
-```bash
-npm run deploy
 ```
 
 ## Contribuindo
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
+Contribuições são bem-vindas! Para contribuir:
 
-1. Fazer fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
-5. Abrir um Pull Request
+1. Faça fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
+
+## Roadmap
+
+Possíveis melhorias futuras:
+
+- [ ] Salvar anotações no localStorage
+- [ ] Categorização de dúvidas por tags
+- [ ] Exportar para PDF ou Markdown
+- [ ] Temas de cores personalizáveis
+- [ ] Modo escuro
+- [ ] Atalhos de teclado adicionais
 
 ## Licença
 
@@ -160,13 +127,12 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 **Brenda**
 
 - GitHub: [@bredscc](https://github.com/bredscc)
+- Website: [brecketline.me](https://brecketline.me)
 
 ## Agradecimentos
 
-- Anthropic pela API do Claude
-- Comunidade React
-- Todos que contribuírem para o projeto
+- Comunidade React e Tailwind CSS
 
 ---
 
-_Se este projeto te ajudou, considere dar uma estrela no GitHub!_
+Desenvolvido com foco em produtividade e aprendizado eficiente
